@@ -1,3 +1,3 @@
 # React Template
 
-p
+My personal react frontend template.

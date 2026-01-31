@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import "./assets/css/App.css";
 import { useState } from "react";
-function ListItem({ animal }) {
+function ListItem({ animal }: { animal: string }) {
   return <li className="animal">{animal}</li>;
 }
-function List({ animals }) {
+function List({ animals }: { animals: string[] }) {
   if (!animals) {
     return <div>Loading...</div>;
   }
@@ -19,16 +19,14 @@ function List({ animals }) {
     </ul>
   );
 }
-function Image({ img }) {
+function Image({ img }: { img: string }) {
   return (
     <>
       <img src={img}></img>
     </>
   );
 }
-function App() {
-  const animals = ["Lion", "Sheep", "Moose"];
-  const [img, setImg] = useState();
+function fetchImage(setImg: (url: string) => void) {
   useEffect(() => {
     fetch("https://api.nekosia.cat/api/v1/images/random")
       .then((response) => response.json())
@@ -37,6 +35,11 @@ function App() {
       })
       .catch((reason) => console.error(reason));
   }, []);
+}
+function App() {
+  const animals = ["Lion", "Sheep", "Moose"];
+  const [img, setImg] = useState("");
+  fetchImage(setImg);
   return (
     <>
       <h1>Animals: </h1>
