@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { ListContext } from "../App";
+
 function ListItem({ animal }: { animal: string }) {
   return <li className="animal">{animal}</li>;
 }
-function List({ animals }: { animals: string[] }) {
+function List() {
+  const { animals } = useContext(ListContext);
   if (!animals) {
     return <div>Loading...</div>;
   }
