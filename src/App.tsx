@@ -1,54 +1,18 @@
-import { useEffect } from "react";
 import "./assets/css/App.css";
-import { useState } from "react";
-function ListItem({ animal }: { animal: string }) {
-  return <li className="animal">{animal}</li>;
-}
-function List({ animals }: { animals: string[] }) {
-  if (!animals) {
-    return <div>Loading...</div>;
-  }
-  if (animals.length === 0) {
-    return <div>There are no animals</div>;
-  }
-  return (
-    <ul>
-      {animals.map((animal) => {
-        return <ListItem key={animal} animal={animal}></ListItem>;
-      })}
-    </ul>
-  );
-}
-function Image({ img }: { img: string }) {
+import { Link } from "react-router";
+//import Image from "./Image";
+import List from "./components/List";
+
+function App() {
+  const animals = ["Lion", "Sheep", "Moose"];
+
   return (
     <>
-      <img src={img}></img>
+      <h1>Animals: </h1>
+      <List animals={animals} />
+      {/*<Image />*/}
+      <Link to="profile">Profile Page</Link>
     </>
   );
-}
-function fetchImage(setImg: (url: string) => void) {
-  useEffect(() => {
-    fetch("https://api.nekosia.cat/api/v1/images/random")
-      .then((response) => response.json())
-      .then((data) => {
-        setImg(data.image.original.url);
-      })
-      .catch((reason) => console.error(reason));
-  }, []);
-}
-// function App() {
-//   const animals = ["Lion", "Sheep", "Moose"];
-//   const [img, setImg] = useState("");
-//   //fetchImage(setImg);
-//   return (
-//     <>
-//       <h1>Animals: </h1>
-//       <List animals={animals} />
-//       <Image img={img} />
-//     </>
-//   );
-// }
-function App() {
-  return <h1>our first test</h1>;
 }
 export default App;
