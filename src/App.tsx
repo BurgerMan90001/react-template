@@ -36,17 +36,19 @@ function fetchImage(setImg: (url: string) => void) {
       .catch((reason) => console.error(reason));
   }, []);
 }
+// function App() {
+//   const animals = ["Lion", "Sheep", "Moose"];
+//   const [img, setImg] = useState("");
+//   //fetchImage(setImg);
+//   return (
+//     <>
+//       <h1>Animals: </h1>
+//       <List animals={animals} />
+//       <Image img={img} />
+//     </>
+//   );
+// }
 function App() {
-  const animals = ["Lion", "Sheep", "Moose"];
-  const [img, setImg] = useState("");
-  fetchImage(setImg);
-  return (
-    <>
-      <h1>Animals: </h1>
-      <List animals={animals} />
-      <Image img={img} />
-    </>
-  );
+  return <h1>our first test</h1>;
 }
-
 export default App;
